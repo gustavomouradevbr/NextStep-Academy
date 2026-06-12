@@ -1,0 +1,87 @@
+body {
+    background-color: #f4f7f6;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+ 
+/* Estilo para o título h2 */
+h2 {
+    text-align: center;
+    color: #2c3e50;
+    padding-top: 40px;
+    margin-bottom: 20px;
+}
+ 
+/* Estilo do formulário */
+form {
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+}
+ 
+/* Estilo para os labels */
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    font-size: 13px;
+    color: #34495e;
+}
+ 
+/* Estilo para os campos de input e select */
+input[type="number"], select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #dcdde1;
+    border-radius: 6px;
+    font-size: 15px;
+    background-color: #fcfcfc;
+    transition: border-color 0.3s ease;
+}
+
+input[type="number"]:focus, select:focus {
+    border-color: #3498db;
+    outline: none;
+}
+ 
+/* Estilo para o botão */
+button {
+    background-color: #3498db;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+ 
+button:hover {
+    background-color: #2980b9;
+}
+ 
+/* Estilo para a mensagem de resultado */
+div {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+}
+ 
+h3 {
+    color: #2c3e50;
+}
+
+.destaque {
+    color: #e74c3c;
+}
