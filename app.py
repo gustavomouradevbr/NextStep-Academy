@@ -18,7 +18,7 @@ def index():
         idade = int(request.form.get("idade"))
         historico_repetencia = int(request.form.get("historico_repetencia"))
 
-        resultado = classificar_estudante(
+        resultado, probabilidades = classificar_estudante(
             frequencia,
             media_notas,
             renda_familiar,
@@ -26,13 +26,13 @@ def index():
             historico_repetencia
         )
 
-        # Gráfico fictício da distribuição global de risco com Plotly
+        # Criar DataFrame com as probabilidades da predição e gerar o gráfico de pizza com Plotly
         dados = pd.DataFrame({
             'Status do Aluno': ['Estáveis', 'Em Risco de Evasão'],
-            'Quantidade': [85, 15]
+            'Quantidade': probabilidades
         })
 
-        figura = px.pie(dados, values='Quantidade', names='Status do Aluno', title='Distribuição Global de Risco (Exemplo)')
+        figura = px.pie(dados, values='Quantidade', names='Status do Aluno', title='Probabilidade de Risco do Aluno')
         figura.update_traces(marker=dict(colors=['#2ecc71', '#e74c3c']))
         grafico = pio.to_html(figura, full_html=False)
 
