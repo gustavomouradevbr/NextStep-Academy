@@ -1,87 +1,170 @@
+* { 
+    box-sizing: border-box; 
+}
+
 body {
-    background-color: #f4f7f6;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
     color: #333;
+    display: flex;
+    min-height: 100vh;
 }
- 
-/* Estilo para o título h2 */
-h2 {
+
+/* Sidebar de Navegação */
+.sidebar {
+    width: 250px;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    position: fixed;
+    height: 100%;
+    padding-top: 30px;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+}
+.sidebar h2 {
     text-align: center;
-    color: #2c3e50;
-    padding-top: 40px;
-    margin-bottom: 20px;
+    font-size: 22px;
+    margin-bottom: 40px;
+    padding: 0 15px;
+    color: #fff;
 }
- 
-/* Estilo do formulário */
-form {
-    width: 100%;
-    max-width: 500px;
-    margin: 20px auto;
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.sidebar ul li a {
+    display: block;
+    padding: 16px 25px;
+    color: #bdc3c7;
+    text-decoration: none;
+    font-size: 15px;
+    transition: 0.3s;
+}
+.sidebar ul li a:hover {
+    background-color: #34495e;
+    color: #fff;
+    border-left: 4px solid #3498db;
+}
+
+/* Conteúdo Principal */
+.main-content {
+    margin-left: 250px;
+    padding: 40px;
+    flex: 1;
+    width: calc(100% - 250px);
+}
+.header h1 { margin-top: 0; color: #2c3e50; font-size: 28px; }
+.header p { color: #7f8c8d; margin-bottom: 30px; font-size: 15px; }
+
+/* Previsão (Form e Resultado Lado a Lado) */
+.container-previsao {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+.form-box, .result-box {
+    background: #fff;
     padding: 30px;
-    background-color: white;
     border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    flex: 1;
 }
- 
-/* Estilo para os labels */
+.result-box {
+    text-align: center;
+}
+.grafico-container {
+    margin-top: 20px;
+}
+
+/* Inputs e Forms */
 label {
     display: block;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
     font-weight: 600;
-    font-size: 13px;
+    font-size: 14px;
     color: #34495e;
 }
- 
-/* Estilo para os campos de input e select */
 input[type="number"], select {
-    width: calc(100% - 20px);
-    padding: 10px;
+    width: 100%;
+    padding: 12px;
     margin-bottom: 20px;
     border: 1px solid #dcdde1;
     border-radius: 6px;
-    font-size: 15px;
     background-color: #fcfcfc;
+    font-size: 14px;
     transition: border-color 0.3s ease;
 }
-
 input[type="number"]:focus, select:focus {
     border-color: #3498db;
     outline: none;
 }
- 
-/* Estilo para o botão */
-button {
+
+/* Botões */
+button[type="submit"], .btn-download {
     background-color: #3498db;
     color: white;
     padding: 14px 20px;
     border: none;
     border-radius: 6px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: bold;
     cursor: pointer;
     width: 100%;
-    transition: background-color 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.3s;
 }
- 
-button:hover {
+button[type="submit"]:hover, .btn-download:hover {
     background-color: #2980b9;
 }
- 
-/* Estilo para a mensagem de resultado */
-div {
-    max-width: 600px;
-    margin: 30px auto;
-    padding: 10px;
-    border-radius: 4px;
-    text-align: center;
-}
- 
-h3 {
-    color: #2c3e50;
+.btn-download { 
+    width: auto; 
+    padding: 10px 20px;
 }
 
-.destaque {
-    color: #e74c3c;
+/* Textos e Destaques */
+.destaque { 
+    color: #e74c3c; 
+    font-weight: bold; 
 }
+
+/* Containers do Dashboard */
+.charts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.chart-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+/* Tabela de Dados */
+.table-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    overflow-x: auto;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+table th, table td {
+    padding: 14px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ecf0f1;
+    font-size: 14px;
+}
+table th {
+    background-color: #f8f9fa;
+    color: #2c3e50;
+    font-weight: 600;
+}
+table tr:hover { background-color: #fcfcfc; }

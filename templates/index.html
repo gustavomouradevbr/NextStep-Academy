@@ -1,16 +1,14 @@
-<!doctype html>
-<html lang="pt">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='style.css') }}"
-    />
-    <title>Formulário de Dados Médicos</title>
-  </head>
-  <body>
-    <h2>Avaliação de Risco de Evasão Escolar</h2>
+{% extends 'base.html' %} {% block content %}
+<div class="header">
+  <h1>Previsão de Risco de Evasão</h1>
+  <p>
+    Insira os dados do estudante para analisar a probabilidade e o impacto de
+    cada fator.
+  </p>
+</div>
+
+<div class="container-previsao">
+  <div class="form-box">
     <form action="/" method="POST">
       <label for="frequencia">Frequência Escolar (%):</label>
       <input
@@ -21,7 +19,7 @@
         min="0"
         max="100"
         required
-      /><br /><br />
+      />
 
       <label for="media_notas">Média das Notas (0 a 10):</label>
       <input
@@ -32,39 +30,34 @@
         min="0"
         max="10"
         required
-      /><br /><br />
+      />
 
       <label for="renda_familiar">Renda Familiar:</label>
       <select id="renda_familiar" name="renda_familiar" required>
         <option value="1">Baixa</option>
         <option value="2">Média</option>
-        <option value="3">Alta</option></select
-      ><br /><br />
+        <option value="3">Alta</option>
+      </select>
 
       <label for="idade">Idade do Aluno:</label>
-      <input
-        type="number"
-        id="idade"
-        name="idade"
-        min="5"
-        max="100"
-        required
-      /><br /><br />
+      <input type="number" id="idade" name="idade" min="5" max="100" required />
 
       <label for="historico_repetencia">Histórico de Repetência:</label>
       <select id="historico_repetencia" name="historico_repetencia" required>
         <option value="0">Não possui</option>
-        <option value="1">Sim, possui</option></select
-      ><br /><br />
+        <option value="1">Sim, possui</option>
+      </select>
 
-      <button type="submit">Enviar</button>
+      <button type="submit">Avaliar Aluno</button>
     </form>
-    {% if predicao %}
-    <div>
-      <h3>Resultado da Análise: <span class="destaque">{{predicao}}</span></h3>
-    </div>
+  </div>
 
-    <div>{{ grafico|safe }}</div>
-    {% endif %}
-  </body>
-</html>
+  {% if predicao %}
+  <div class="result-box">
+    <h3>Diagnóstico: <span class="destaque">{{ predicao }}</span></h3>
+    <hr style="border: 0; border-top: 1px solid #ecf0f1; margin: 20px 0" />
+    <div class="grafico-container">{{ grafico|safe }}</div>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

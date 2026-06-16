@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <title>EducaDash - Prevenção de Evasão</title>
+  </head>
+  <body>
+    <div class="sidebar">
+      <h2>EducaDash</h2>
+      <ul>
+        <li><a href="/">Nova Previsão</a></li>
+        <li><a href="/dashboard">Análises Globais</a></li>
+        <li><a href="/dados">Base de Dados</a></li>
+      </ul>
+    </div>
+
+    <div class="main-content">
+      {% block content %}
+      <!-- O conteúdo das outras páginas é injetado aqui -->
+      {% endblock %}
+    </div>
+  </body>
+</html>
