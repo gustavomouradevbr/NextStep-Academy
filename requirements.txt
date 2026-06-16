@@ -3,3 +3,5 @@ Flask
 scikit-learn
 numpy
 plotly
+matplotlib
+seaborn
