@@ -1,1 +1,13 @@
-model.py
+# Ambiente virtual
+.venv/
+venv/
+
+# Cache do Python
+__pycache__/
+*.pyc
+
+# Banco de dados local (gerado em tempo de execução)
+banco.db
+
+# Checkpoints do Jupyter
+.ipynb_checkpoints/

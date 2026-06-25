@@ -1,14 +1,35 @@
-{% extends 'base.html' %} {% block content %}
-<div
-  class="header"
-  style="display: flex; justify-content: space-between; align-items: center"
->
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="header" style="display: flex; justify-content: space-between; align-items: center">
   <div>
     <h1>Base de Dados</h1>
     <p>Acesse e exporte o histórico completo das predições realizadas.</p>
   </div>
-  <a href="/exportar" class="btn-download">Baixar Arquivo CSV</a>
+  <a href="/exportar" class="btn-download">⬇ Baixar CSV</a>
 </div>
+
+<!-- Cards de estatísticas rápidas -->
+{% if stats %}
+<div class="stats-grid">
+  <div class="stat-card">
+    <div class="stat-value">{{ stats.total }}</div>
+    <div class="stat-label">Predições Realizadas</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-value">{{ stats.media_freq }}%</div>
+    <div class="stat-label">Frequência Média</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-value">{{ stats.media_nota }}</div>
+    <div class="stat-label">Média de Notas</div>
+  </div>
+  <div class="stat-card stat-card--alert">
+    <div class="stat-value">{{ stats.risco_alto }}</div>
+    <div class="stat-label">Casos de Alto Risco</div>
+  </div>
+</div>
+{% endif %}
 
 <div class="table-container">
   <table>
@@ -32,10 +53,22 @@
         <td>{{ r['renda'] }}</td>
         <td>{{ r['idade'] }}</td>
         <td>{{ 'Sim' if r['repetencia'] == 1 else 'Não' }}</td>
-        <td><span class="badge">{{ r['resultado_texto'] }}</span></td>
+        <td>
+          <span class="badge {% if 'Alto' in r['resultado_texto'] or 'Evasão' in r['resultado_texto'] %}badge--danger{% else %}badge--ok{% endif %}">
+            {{ r['resultado_texto'] }}
+          </span>
+        </td>
       </tr>
       {% endfor %}
+      {% if not registros %}
+      <tr>
+        <td colspan="7" style="text-align:center; color:#7f8c8d; padding: 30px;">
+          Nenhuma predição realizada ainda. <a href="/">Faça a primeira aqui.</a>
+        </td>
+      </tr>
+      {% endif %}
     </tbody>
   </table>
 </div>
+
 {% endblock %}

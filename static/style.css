@@ -1,5 +1,5 @@
-* { 
-    box-sizing: border-box; 
+* {
+    box-sizing: border-box;
 }
 
 body {
@@ -12,7 +12,7 @@ body {
     min-height: 100vh;
 }
 
-/* Sidebar de Navegação */
+/* ── Sidebar ──────────────────────────────────────────────── */
 .sidebar {
     width: 250px;
     background-color: #2c3e50;
@@ -48,7 +48,7 @@ body {
     border-left: 4px solid #3498db;
 }
 
-/* Conteúdo Principal */
+/* ── Conteúdo Principal ───────────────────────────────────── */
 .main-content {
     margin-left: 250px;
     padding: 40px;
@@ -56,9 +56,47 @@ body {
     width: calc(100% - 250px);
 }
 .header h1 { margin-top: 0; color: #2c3e50; font-size: 28px; }
-.header p { color: #7f8c8d; margin-bottom: 30px; font-size: 15px; }
+.header p  { color: #7f8c8d; margin-bottom: 30px; font-size: 15px; }
 
-/* Previsão (Form e Resultado Lado a Lado) */
+/* ── Seção do Dashboard ───────────────────────────────────── */
+.section-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #2c3e50;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 36px 0 14px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e0e4ea;
+}
+.section-title .section-icon {
+    margin-right: 6px;
+}
+
+/* ── Grids de Gráficos ────────────────────────────────────── */
+.charts-grid {
+    display: grid;
+    gap: 24px;
+}
+.charts-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+.charts-grid-1 {
+    grid-template-columns: 1fr;
+}
+@media (max-width: 900px) {
+    .charts-grid-2 { grid-template-columns: 1fr; }
+}
+
+.chart-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+/* ── Previsão (Form + Resultado) ──────────────────────────── */
 .container-previsao {
     display: flex;
     gap: 30px;
@@ -71,14 +109,10 @@ body {
     box-shadow: 0 4px 15px rgba(0,0,0,0.03);
     flex: 1;
 }
-.result-box {
-    text-align: center;
-}
-.grafico-container {
-    margin-top: 20px;
-}
+.result-box { text-align: center; }
+.grafico-container { margin-top: 20px; }
 
-/* Inputs e Forms */
+/* ── Inputs ───────────────────────────────────────────────── */
 label {
     display: block;
     margin-bottom: 8px;
@@ -101,7 +135,7 @@ input[type="number"]:focus, select:focus {
     outline: none;
 }
 
-/* Botões */
+/* ── Botões ───────────────────────────────────────────────── */
 button[type="submit"], .btn-download {
     background-color: #3498db;
     color: white;
@@ -120,31 +154,52 @@ button[type="submit"], .btn-download {
 button[type="submit"]:hover, .btn-download:hover {
     background-color: #2980b9;
 }
-.btn-download { 
-    width: auto; 
+.btn-download {
+    width: auto;
     padding: 10px 20px;
 }
 
-/* Textos e Destaques */
-.destaque { 
-    color: #e74c3c; 
-    font-weight: bold; 
-}
+/* ── Destaque ─────────────────────────────────────────────── */
+.destaque { color: #e74c3c; font-weight: bold; }
 
-/* Containers do Dashboard */
-.charts-container {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+/* ── Cards de Estatísticas (página Dados) ─────────────────── */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
 }
-.chart-box {
+@media (max-width: 900px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.stat-card {
     background: #fff;
-    padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    padding: 24px 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    text-align: center;
+    border-top: 4px solid #3498db;
+}
+.stat-card--alert {
+    border-top-color: #e74c3c;
+}
+.stat-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: #2c3e50;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+.stat-card--alert .stat-value { color: #e74c3c; }
+.stat-label {
+    font-size: 13px;
+    color: #7f8c8d;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
 }
 
-/* Tabela de Dados */
+/* ── Tabela ───────────────────────────────────────────────── */
 .table-container {
     background: #fff;
     padding: 20px;
@@ -152,10 +207,7 @@ button[type="submit"]:hover, .btn-download:hover {
     box-shadow: 0 4px 15px rgba(0,0,0,0.03);
     overflow-x: auto;
 }
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
+table { width: 100%; border-collapse: collapse; }
 table th, table td {
     padding: 14px 15px;
     text-align: left;
@@ -168,3 +220,22 @@ table th {
     font-weight: 600;
 }
 table tr:hover { background-color: #fcfcfc; }
+
+/* ── Badges ───────────────────────────────────────────────── */
+.badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    background-color: #eaf4fd;
+    color: #2980b9;
+}
+.badge--danger {
+    background-color: #fdecea;
+    color: #c0392b;
+}
+.badge--ok {
+    background-color: #eafaf1;
+    color: #1e8449;
+}

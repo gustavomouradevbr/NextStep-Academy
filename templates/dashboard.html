@@ -1,11 +1,64 @@
 {% extends 'base.html' %} {% block content %}
+
 <div class="header">
   <h1>Análises Globais</h1>
   <p>Visão panorâmica dos dados e comportamentos dos estudantes.</p>
 </div>
 
-<div class="charts-container">
-  <div class="chart-box">{{ grafico_dispersao|safe }}</div>
-  <div class="chart-box">{{ grafico_hist|safe }}</div>
+<!-- Seção 1: Distribuições -->
+<div class="section-title">
+  <span class="section-icon">📊</span> Distribuições
 </div>
+<div class="charts-grid charts-grid-2">
+  {% if graficos.hist_notas %}
+  <div class="chart-box">{{ graficos.hist_notas|safe }}</div>
+  {% endif %} {% if graficos.hist_renda %}
+  <div class="chart-box">{{ graficos.hist_renda|safe }}</div>
+  {% endif %}
+</div>
+
+<!-- Seção 2: Risco de Evasão -->
+<div class="section-title">
+  <span class="section-icon">⚠️</span> Risco de Evasão
+</div>
+<div class="charts-grid charts-grid-2">
+  {% if graficos.pizza_evasao %}
+  <div class="chart-box">{{ graficos.pizza_evasao|safe }}</div>
+  {% endif %} {% if graficos.barras_rep %}
+  <div class="chart-box">{{ graficos.barras_rep|safe }}</div>
+  {% endif %}
+</div>
+
+<!-- Seção 3: Análise por Idade -->
+<div class="section-title">
+  <span class="section-icon">🧑‍🎓</span> Análise por Idade
+</div>
+<div class="charts-grid charts-grid-1">
+  {% if graficos.risco_idade %}
+  <div class="chart-box">{{ graficos.risco_idade|safe }}</div>
+  {% endif %}
+</div>
+
+<!-- Seção 3: Correlações -->
+<div class="section-title">
+  <span class="section-icon">🔍</span> Correlações
+</div>
+<div class="charts-grid charts-grid-2">
+  {% if graficos.dispersao %}
+  <div class="chart-box">{{ graficos.dispersao|safe }}</div>
+  {% endif %} {% if graficos.dispersao_freq_media %}
+  <div class="chart-box">{{ graficos.dispersao_freq_media|safe }}</div>
+  {% endif %}
+</div>
+
+<!-- Seção 4: Renda e Frequência -->
+<div class="section-title">
+  <span class="section-icon">💰</span> Renda & Frequência
+</div>
+<div class="charts-grid charts-grid-1">
+  {% if graficos.box_freq_renda %}
+  <div class="chart-box">{{ graficos.box_freq_renda|safe }}</div>
+  {% endif %}
+</div>
+
 {% endblock %}
